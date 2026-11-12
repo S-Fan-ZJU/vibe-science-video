@@ -1,0 +1,120 @@
+{
+  "created": "2026-11-12",
+  "scope": "Three 18-second original science clips; website copies derived from local 1080p60 masters",
+  "samples": [
+    {
+      "file": "prism-reveal.mp4",
+      "sha256": "5a10a4900ddde677934809c214d07d3b738041af7a74dd90be0cc4a8c974c83f",
+      "bytes": 2015564,
+      "status": "PASS",
+      "video": {
+        "codec": "h264",
+        "width": 1280,
+        "height": 720,
+        "header_average_fps": 60.0,
+        "pixel_format": "yuv420p",
+        "decoded_frames": 1080,
+        "first_pts_seconds": 0.0,
+        "last_pts_seconds": 17.983333333333334,
+        "decoded_duration_seconds": 18.0,
+        "missing_pts": 0,
+        "non_increasing_pts": 0,
+        "intervals_off_nominal": 0,
+        "max_interval_error_seconds": 0.0
+      },
+      "audio": {
+        "present": true,
+        "codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "start_minus_video_seconds": 0.0,
+        "end_minus_video_seconds": 0.005333,
+        "decoded_frames": 844,
+        "decoded_samples_per_channel": 864256,
+        "first_pts_seconds": 0.0,
+        "end_pts_seconds": 18.005333333333336,
+        "sample_peak_dbfs": -4.134,
+        "samples_at_or_above_full_scale": 0,
+        "peak_scope": "Decoded sample peak; not oversampled true peak or integrated loudness."
+      }
+    },
+    {
+      "file": "noise-cancellation.mp4",
+      "sha256": "65e9451b88158cb91800b19dd5641043456d8aed52933a7d07a27b53b5b962d1",
+      "bytes": 2571524,
+      "status": "PASS",
+      "video": {
+        "codec": "h264",
+        "width": 1280,
+        "height": 720,
+        "header_average_fps": 60.0,
+        "pixel_format": "yuv420p",
+        "decoded_frames": 1080,
+        "first_pts_seconds": 0.0,
+        "last_pts_seconds": 17.983333333333334,
+        "decoded_duration_seconds": 18.0,
+        "missing_pts": 0,
+        "non_increasing_pts": 0,
+        "intervals_off_nominal": 0,
+        "max_interval_error_seconds": 0.0
+      },
+      "audio": {
+        "present": true,
+        "codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "start_minus_video_seconds": 0.0,
+        "end_minus_video_seconds": 0.005333,
+        "decoded_frames": 844,
+        "decoded_samples_per_channel": 864256,
+        "first_pts_seconds": 0.0,
+        "end_pts_seconds": 18.005333333333336,
+        "sample_peak_dbfs": -4.134,
+        "samples_at_or_above_full_scale": 0,
+        "peak_scope": "Decoded sample peak; not oversampled true peak or integrated loudness."
+      }
+    },
+    {
+      "file": "domino-energy.mp4",
+      "sha256": "6cf36ff55d84382ae624d2b0c0a67c49dd13a2d58fc41c189263bb97a53dfd78",
+      "bytes": 2223416,
+      "status": "PASS",
+      "video": {
+        "codec": "h264",
+        "width": 1280,
+        "height": 720,
+        "header_average_fps": 60.0,
+        "pixel_format": "yuv420p",
+        "decoded_frames": 1080,
+        "first_pts_seconds": 0.0,
+        "last_pts_seconds": 17.983333333333334,
+        "decoded_duration_seconds": 18.0,
+        "missing_pts": 0,
+        "non_increasing_pts": 0,
+        "intervals_off_nominal": 0,
+        "max_interval_error_seconds": 0.0
+      },
+      "audio": {
+        "present": true,
+        "codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "start_minus_video_seconds": 0.0,
+        "end_minus_video_seconds": 0.005333,
+        "decoded_frames": 844,
+        "decoded_samples_per_channel": 864256,
+        "first_pts_seconds": 0.0,
+        "end_pts_seconds": 18.005333333333336,
+        "sample_peak_dbfs": -4.134,
+        "samples_at_or_above_full_scale": 0,
+        "peak_scope": "Decoded sample peak; not oversampled true peak or integrated loudness."
+      }
+    }
+  ],
+  "reveal_frame": 504,
+  "fps": 60,
+  "source_onset_seconds": 17.194376,
+  "bgm_trim_seconds": 8.8,
+  "expected_reveal_seconds": 8.4,
+  "audio_note": "Shared score; Noise AAC cue correlation measured 8.400000s, r=0.98386. Sample peak only, not true peak or LUFS."
+}

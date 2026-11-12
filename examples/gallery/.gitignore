@@ -1,0 +1,5 @@
+node_modules/
+public/audio/
+out/
+.remotion/
+src/audio-config.json

@@ -8,6 +8,8 @@
 
 [![查看案例展示](docs/media/poster.jpg)](https://s-fan-zju.github.io/vibe-science-video/)
 
+新增三段独立机制动画：**棱镜分光、主动降噪、多米诺势能**。每段 18 秒，提供完整 1080p60 源工程，网站可直接播放轻量版。[观看新样片](https://s-fan-zju.github.io/vibe-science-video/#gallery) · [运行和修改工程](examples/gallery/README.md)
+
 源于《把细菌，变成药》的实际制作、反馈和修订。原片已由作者发布到 B 站与抖音；这里展示的是该项目片段，不是只改一次标题就能生成的通用模板。作者反馈收到同学好评；本仓库没有使用未经验证的播放量或留存率来宣传效果。
 
 ## 下载后能得到什么
