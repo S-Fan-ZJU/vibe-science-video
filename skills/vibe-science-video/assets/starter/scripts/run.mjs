@@ -19,8 +19,9 @@ if(mode!=='studio')fs.mkdirSync(job); // exclusive directory; never reuse a dest
 const pkg=path.dirname(require.resolve('@remotion/cli/package.json'));
 const cli=path.join(pkg,'remotion-cli.js');
 const rendererFlag=process.env.REMOTION_GL?[`--gl=${process.env.REMOTION_GL}`]:[];
+const stillFrameFlag=extra.some(arg=>arg==='--frame'||arg.startsWith('--frame='))?[]:['--frame=432'];
 const args=mode==='studio'?['studio','src/index.ts',...extra]:mode==='still'?
-  ['still','src/index.ts','MotionLab',path.join(job,'still.png'),'--frame=432',...rendererFlag,...extra]:
+  ['still','src/index.ts','MotionLab',path.join(job,'still.png'),...stillFrameFlag,...rendererFlag,...extra]:
   ['render','src/index.ts','MotionLab',path.join(job,'motion-lab.mp4'),'--codec=h264','--crf=19','--pixel-format=yuv420p','--concurrency=2','--timeout=120000',...rendererFlag,...extra];
 const result=spawnSync(process.execPath,[cli,...args],{cwd:root,stdio:'inherit',env:process.env});
 if(result.error)throw result.error;
