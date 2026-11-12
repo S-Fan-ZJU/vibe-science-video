@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe 科学视频"
+  short_description: "从论文与知识问题制作有机制深度、音乐张力和完整验收的科学动画视频"
+  default_prompt: "请使用 $vibe-science-video，将我提供的主题或论文做成有吸引力、能讲清机制且经过音画检查的可发布视频。"

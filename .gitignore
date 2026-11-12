@@ -1,0 +1,17 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.validation/
+output/
+out/
+tmp/
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.log
+.remotion/
+skills/vibe-science-video/assets/starter/public/audio/
+skills/vibe-science-video/assets/starter/src/audio-config.json

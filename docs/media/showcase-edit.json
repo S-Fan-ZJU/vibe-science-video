@@ -1,0 +1,37 @@
+{
+  "source_filename": "living-medicines-v3-patched-1080p60.mp4",
+  "source_sha256": "a042f613ffda980d18128ecaacddc446bdbd29fab530145b5a1f4522c31fa7d7",
+  "clips_seconds_start_inclusive_end_exclusive": [
+    [
+      0,
+      3
+    ],
+    [
+      12,
+      16
+    ],
+    [
+      66,
+      71.5
+    ],
+    [
+      97.5,
+      101
+    ],
+    [
+      119.5,
+      124
+    ],
+    [
+      144.5,
+      148
+    ]
+  ],
+  "duration_seconds": 24,
+  "frames": 720,
+  "fps": 30,
+  "width": 1280,
+  "height": 720,
+  "audio": "source audio with 15 ms edge fades at cuts",
+  "output_sha256": "f2732bc02dd7380f6cd50fe7aca265874b953f72579dc5890a229c7705997bdd"
+}

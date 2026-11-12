@@ -1,0 +1,8 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.m4a binary
+*.mp4 binary
+*.png binary
+*.jpg binary

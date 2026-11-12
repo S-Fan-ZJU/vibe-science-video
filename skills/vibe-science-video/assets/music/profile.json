@@ -1,0 +1,22 @@
+{
+  "id": "project-reference-bv1mlww6veux",
+  "file": "reference-bgm.m4a",
+  "source_url": "https://www.bilibili.com/video/BV1mLWw6VEux/",
+  "track_title": null,
+  "artist": null,
+  "provided_by": "project author",
+  "license_status": "third-party; independent redistribution license not verified; not MIT",
+  "sha256": "dbb91b8a336c777005bede48d13e737cc6fdd7202524b8627eaed3eb53853264",
+  "decoded_duration_seconds": 181.951565,
+  "sample_rate": 44100,
+  "channels": 2,
+  "historical_case_analysis": {
+    "bpm_fit": 111.61874,
+    "seconds_per_beat": 0.5375441473,
+    "beat_count": 333,
+    "onset_count": 725,
+    "downbeat_and_meter_confirmed": false,
+    "final_film_source_trim_start_seconds": 4.479206349,
+    "warning": "Case data from original workflow, not output of this package analyzer. Reanalyze the actual edited soundtrack for every new film. Onsets are not all drum hits."
+  }
+}
