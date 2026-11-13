@@ -1,0 +1,33 @@
+{
+  "name": "vibe-knowledge-motion-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic 3D timing laboratory for knowledge videos",
+  "license": "MIT",
+  "engines": {"node": ">=22.13.0"},
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "preview": "node scripts/run.mjs studio",
+    "check": "tsc --noEmit && node scripts/check-geometry.mjs",
+    "test:setup": "node scripts/test-setup.mjs",
+    "render": "node scripts/run.mjs render",
+    "still": "node scripts/run.mjs still"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/cli": "4.0.543",
+    "@remotion/media": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "mediabunny": "1.64.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.543",
+    "three": "0.187.0"
+  },
+  "allowScripts": {"esbuild": false},
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/three": "0.187.0",
+    "typescript": "5.9.3"
+  }
+}

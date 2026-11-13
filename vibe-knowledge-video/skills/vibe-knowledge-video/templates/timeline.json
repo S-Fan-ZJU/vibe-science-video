@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "fps": 60,
+  "duration_frames": 720,
+  "captions": [
+    {
+      "id": "question",
+      "start_frame": 0,
+      "end_frame": 180,
+      "text": "一个条件，为什么还不够？"
+    },
+    {
+      "id": "comparison",
+      "start_frame": 180,
+      "end_frame": 420,
+      "text": "先分别尝试，输出依然关闭。"
+    },
+    {
+      "id": "answer",
+      "start_frame": 420,
+      "end_frame": 660,
+      "text": "两个条件共同满足，输出才开启。"
+    }
+  ],
+  "events": [
+    {
+      "id": "example-only-open",
+      "animation_start_frame": 450,
+      "visible_peak_frame": 480,
+      "audio_peak_frame": 480,
+      "tolerance_frames": 2
+    }
+  ],
+  "music": {},
+  "note": "Illustrative schema only. Frame ranges are end-exclusive. Rebuild event times from the actual final music and rendered visible action; these are not reference-BGM cue times."
+}

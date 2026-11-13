@@ -1,0 +1,176 @@
+# 可移植工具：素材、节奏、时间轴和导出检查
+
+这些工具在本地读写文件，不会上传音频、读取账号或调用付费服务。它们把可机械验证的部分变成报告；**不会替你判断动画是否适合用途、知识解释是否成立，或观众是否真的读得完。**
+
+## 1. 安装与运行位置
+
+下面命令假设当前目录是已下载的 `skills/vibe-knowledge-video`，或项目中的 `.agents/skills/vibe-knowledge-video`。输入可以是相对路径或绝对路径；包含空格的路径要加引号。输出位置由你指定，通常放在视频项目的 `output/qa/`。
+
+使用 Python 3.11 或更新版本。已实测环境是 Windows、Python 3.11.2，以及 `requirements.txt` 中锁定的四个库：PyAV、NumPy、SciPy、Pillow。没有依赖系统 FFmpeg 可执行文件，也没有使用 librosa。
+
+```powershell
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+```
+
+macOS / Linux 将 `.venv/Scripts/python.exe` 换成 `.venv/bin/python`。下面简写为 `python`；如果没有激活虚拟环境，请用实际的虚拟环境 Python 路径替换。确认 `python --version` 指向预期环境。
+
+若目标 Python 或系统没有对应版本的二进制包，换用有支持的 Python 版本，或建立新的兼容依赖锁并重跑测试；不要无声地修改版本后继续声称“已验证”。
+
+每个工具都有 `--help`。音视频报告工具默认拒绝覆盖已有输出；使用新版本文件名，或明确加其支持的 `--force`。模型盘点和参考抽帧工具不提供覆盖选项；抽帧的输出目录必须尚不存在。任何工具都不应该把输出指向输入文件。
+
+### 项目入口与模型盘点（无需第三方依赖）
+
+下面两项仅需 Python 标准库，可先于音视频依赖安装运行。命令仍以 skill 目录为工作位置，`my-project` 请替换为实际项目路径：
+
+```sh
+python scripts/project_guidance.py --project "my-project"
+python scripts/scan_models.py --project "my-project" --output "my-project/output/model-scan-v1.json"
+```
+
+`project_guidance.py` 为项目 `AGENTS.md` 幂等追加发现入口，保留原有内容；入口提示先读 brief、项目状态、参考分析，并在每条新片前确认用途／受众／风格／节奏／声音与闪烁的缺项。它不创建模型、移动素材或改写已有清单，也不会伪造已确认需求。若存在 `AGENTS.override.md`，提示后按项目实际指引处理。初始化器与安装器也会调用此入口。
+
+新项目初始化另创建 `planning/brief.md`、`planning/project-state.md`、`references/README.md`、空的 `references/videos/` 与 `references/analysis/`。已有项目安装 skill 时只补发现入口，按实际文件恢复内容，不凭空创建该项目已完成的历史。
+
+`scan_models.py` 默认向终端输出 JSON，`--output` 只创建新报告。它检查 `assets/models/` 及索引中的项目内候选，拒绝读取逃逸项目的路径。`summary.candidateModels` 是文件数，可能包括同一资产的原件和多个转换；`summary.indexedCandidates` 是其中已被索引引用的候选文件数。`missingIndexedFiles`、`excluded`、`errors` 记录缺失／排除／错误；`deferred` 表示超出轻量读取范围，不能据此当成损坏模型。
+
+GLB 报告的场景三角面计入节点实例，来源与 README 只作为位置线索。它不验证所有格式内部结构，不下载或读取外部贴图，不认证许可、科学内容和画质。完整使用判断见 [模型库指南](model-library.md)。
+
+### 参考视频的时间码抽帧
+
+使用本地视频生成原尺寸 JPEG、带时间码拼图和 `extraction.json`，适合全片概览与重点区间检查。它不修改源视频、不下载媒体、不做主观视听或事实核验。
+
+```powershell
+# 每 5 秒取样；输出目录须尚不存在
+python scripts/prepare_reference_review.py "my-project/references/videos/ref01.mp4" --output "my-project/references/analysis/ref01-overview-v1" --interval 5
+# 仅对关键区间加密采样
+python scripts/prepare_reference_review.py "my-project/references/videos/ref01.mp4" --output "my-project/references/analysis/ref01-detail-v1" --start 24 --end 31 --interval 0.25
+# 按已选事件显式取样；时间必须在视频范围内
+python scripts/prepare_reference_review.py "my-project/references/videos/ref01.mp4" --output "my-project/references/analysis/ref01-cues-v1" --times "25.5,25.6,25.7,29.3"
+```
+
+报告记录 `source_sha256`、媒体规格、请求时间和实际解码帧时间；`samples[].file` 与 `contact_sheets` 路径相对于报告目录，便于迁移。工具使用 Pillow 默认字体，可通过 `--font` 指定字体文件；不依赖某台 Windows 电脑的字体目录。`--columns` 和 `--per-page` 调整拼图布局。
+
+选帧按最接近请求时刻的实际可解码帧进行；半秒或四分之一秒采样不等于逐帧检测。对音乐攻击点或快速接触，应按源 fps 请求相邻帧，并结合声音分析／试听。输出目录已存在即拒绝，失败时可能留下不完整目录，应保留以便检查并换新版本目录重试。
+
+拆解记录的写法和八条实践方法见 [参考分析](reference-analysis.md)。若对自己制作的成片做最终验收，继续使用 `inspect_media.py` 的完整解码检查；抽帧成功不替代它。
+
+## 2. 分析 BGM：先找候选，再试听确认
+
+支持本地 WAV、MP3、M4A 以及含音轨的视频，实际支持格式以 PyAV 的解码能力为准。仅分析第一条音轨。提供原音乐或已经剪辑、循环、交叉淡化后的最终音乐都可以，但**动作设计必须绑定最终音乐版本**。
+
+```powershell
+python scripts/analyze_bgm.py "my-project/assets/audio/bgm-final.m4a" --output "my-project/output/qa/bgm-analysis-v1.json"
+```
+
+报告包含：
+
+| 字段 | 解释和用途 |
+|---|---|
+| `source.sha256` | 音频内容指纹。更换、剪辑或重新编码后，原事件表需复核 |
+| `decoded_duration_seconds` | 完整解码的采样时长 |
+| `tempo_candidates` | 周期性估计的 BPM 候选；分数是相对得分，不是置信概率 |
+| `local_tempo_candidates` | 局部时间窗的候选，用来发现整体 BPM 无法解释的变化 |
+| `onset_candidates` | 瞬态时间、强度和突出程度；可能来自鼓、琴、效果音或其他声音 |
+| `energy_windows` | 每 0.25 秒的 RMS 能量，辅助判断安静和推进区域 |
+| `energy_change_candidates` | 能量改变的位置建议，不是自动识别的主歌、副歌或小节 |
+| `analysis_hop_seconds` / `analysis_window_seconds` | 分析时间步长和窗口，帮助理解时刻估计误差 |
+
+默认以 22,050 Hz 单声道、2,048 点窗口、256 点步长估计。窗口会平滑瞬态；它给出的点不能直接当成毫秒级真值。单声道峰值也不能用于最终混音限幅，因为双声道相位、采样峰值和真峰值是不同问题。
+
+**使用方式：** 先从能量曲线找可讲清机制的段落，再挑少数候选，试听每个点前后约 1 秒，结合波形确认到底是声音起音、能量峰还是余响。把选定的声音时刻量化为输出帧，再让接触、断裂、揭晓等可见结果落在该帧。不要把每个检测出的瞬态都变成闪光。
+
+长音乐默认最多解码 1,800 秒，避免误读大型媒体文件；需要更长时可显式设置 `--max-seconds`。节拍范围可用 `--min-bpm` 和 `--max-bpm` 调整。
+
+### 可选实验 BGM 与自定义音乐
+
+- 原项目参考曲在 `assets/music/reference-bgm.m4a`，其来源、使用说明和案例节奏资料由音乐目录及项目 README 记录。它只作为明确选定的技术实验输入，新片先确认声音方案，不默认选这首音乐。
+- 对这份原始参考文件，工具实测时长约 **181.952 秒**，最高周期候选约 **111.657 BPM**，还有约 **55.791 BPM** 的半拍候选。这些值只描述本文件，不是 Vibe 视频统一节奏。
+- starter 的演示会截取一段音乐；默认使用原曲约 **5.533333 秒**起点。原曲与演示时间轴不能直接共用绝对秒数。
+- starter 的默认可见激活帧为 **432 / 60 = 7.2 秒**，预备动作从第 **408** 帧开始；该点配有原创建模提示音。BGM 目标、提示音和画面三者仍要在最终导出中一起复核。
+- 自定义方式：在复制出来的 starter 内执行 `npm run setup -- --bgm "自己的音乐.m4a" --trim 0`；参数以 starter README / `--help` 为准。如果已有生成的音频，选择新项目或明确用 `--force` 重新生成。
+- 明确做静音实验时使用 `npm run setup -- --silent`（已有配置按需要加 `--force`），音频验收项按实际范围标记不适用。
+- 更换后必须重新分析最终 BGM，重新挑选事件，调整动作提前量和字幕段落。只替换文件、保留旧卡点，不算完成自定义音乐适配。
+
+## 3. 时间轴检查：对准结果帧，检查阅读负担
+
+`templates/timeline.json` 是独立结构示例，不是对参考 BGM 的卡点承诺。它与 starter 的具体动作时刻可以不同。
+
+```powershell
+python scripts/check_timeline.py "my-project/timeline.json" --output "my-project/output/qa/timeline-v1.json"
+```
+
+可选地绑定音乐指纹：
+
+```powershell
+python scripts/check_timeline.py "my-project/timeline.json" --music-analysis "my-project/output/qa/bgm-analysis-v1.json" --output "my-project/output/qa/timeline-bound-v1.json"
+```
+
+文件结构：
+
+```json
+{
+  "schema_version": 1,
+  "fps": 60,
+  "duration_frames": 720,
+  "music": {"sha256": "这里填写最终音乐分析报告中的64位SHA256"},
+  "captions": [
+    {"id": "c1", "start_frame": 0, "end_frame": 180, "text": "两个条件，缺一不可。"}
+  ],
+  "events": [
+    {"id": "unlock", "animation_start_frame": 408, "visible_peak_frame": 432,
+     "audio_peak_frame": 432, "tolerance_frames": 2}
+  ]
+}
+```
+
+上面的指纹文字是说明，正式文件请填写真实值或删去可选的 `music`。示意时间也要换成你的最终动画数据。
+
+规则：
+
+- 所有事件帧与字幕起止帧都是整数。时间段采用 `[start_frame, end_frame)`，最后一帧为 `duration_frames - 1`。
+- `captions` 代表一条主字幕轨；场景标签、同时存在的物体注释放在场景数据中。主字幕重叠会失败。
+- `animation_start_frame` 是准备动作开始；`visible_peak_frame` 是观众真正看见接触、打开或揭晓的帧；`audio_peak_frame` 是试听确认的声音强调帧。
+- v1 的 `events` 专用于声画配对，要求上述三个帧字段。无声片或没有配对事件的片段使用 `events: []`，把视觉事件保存在分镜／场景数据中；工具会产生未评估同步的 `no_events` 警告，仍检查字幕和时间范围。不要编造 `audio_peak_frame` 来让报告变绿，也不应对此强加 `--warnings-as-errors`。
+- `visible_peak_frame - audio_peak_frame` 为正，表示画面晚于声音。超出事件自己的 `tolerance_frames` 会失败。默认容差 2 帧不是所有效果的审美规范，可按动作和创作意图指定。
+- 字幕速度按 Unicode 字母与数字计数，排除空白和标点。默认每秒 6 字的警告线面向简短中文字幕，不能直接用于英文或高术语密度字幕。
+- 停留超过 6 秒、少于 0.8 秒或文字阅读速度偏快，只给 `WARN`，不是自动删字或压缩时长。结合画面是否继续解释、文字进入动画是否遮挡和手机尺寸阅读做判断。
+- `FAIL` 包括越界、重叠、无效结构、动作先后错误、超容差事件，以及与输入分析报告不一致的音乐指纹。
+- 默认 `WARN` 的退出码仍为 0；只有确实需要在自动流程中拦截所有警告时才加 `--warnings-as-errors`。
+
+可调诊断阈值：`--max-cps 6 --max-dwell 6 --min-dwell 0.8`。这些检查读取的是作者填写的时间轴，不会查看导出画面的真实结果帧；时间轴写对了、动画实现错了，仍可能通过。
+
+## 4. 导出检查：完整解码，再看抽帧
+
+```powershell
+python scripts/inspect_media.py "my-project/output/film-v1.mp4" --output "my-project/output/qa/media-v1.json" --fps 60 --width 1920 --height 1080 --duration 12 --contact-sheet "my-project/output/qa/contact-v1.jpg"
+```
+
+请用真实预期值替换示例的 12 秒和 1080p。检查 4K 母版时用 `--width 3840 --height 2160`。`--duration` 配合 `--fps` 会同时检查精确帧数，因此应传入 `duration_frames / fps`，不要只写四舍五入后的分秒。
+
+工具会完整解码第一条视频和第一条音轨，核对：
+
+- 视频编码信息、尺寸、平均帧率、实际解码帧数与时长。
+- 帧时间戳是否存在、递增、符合预期固定帧间隔。
+- 音轨是否存在、能否解码、时间戳是否递增、是否几乎静音。
+- 解码后的采样峰值与达到满幅的样本数。
+- 音视频起止范围是否明显不同，允许普通 AAC 编码延迟和尾部填充。
+- 文件 SHA-256，帮助确认检查的是最终交付文件。
+
+默认要求有音轨。明确选择无声的正式影片、画面测试或展示片可显式加 `--allow-no-audio`，并记录 brief 依据；不要对正式需要音乐／旁白的成片使用这个参数隐藏漏音轨问题。
+
+抽帧拼图默认 12 张，可用 `--contact-count 8` 调整，范围 1–48。拼图在全片均匀取样，仅用于快速扫查；关键事件前后、转场边界、遮挡穿模最严重时刻仍要另行取帧或逐段播放。
+
+**报告范围必须如实转述：** “完整解码通过，检查了 12 张抽帧”不等于“完整主观观看确认无问题”。视频里物体穿模、中文缺字、科学表述错误、提示音被 BGM 掩盖，都可能通过这个工具。这里的采样峰值也不是过采样真峰值或综合响度；需要后者时使用相应音频测量工具。
+
+## 5. 本工具集的回归验证
+
+从仓库根目录运行：
+
+```powershell
+python -m unittest discover -s tests -v
+```
+
+测试在 `.validation/` 下生成合成音频与两秒视频，结束后清理临时夹。它们验证节拍候选是否能找回已知周期、静音不会凭空生出节拍、字幕嵌套重叠和卡点偏移是否被检出、更换音乐指纹是否被拒绝、缺音轨是否显式失败、完整解码是否发现尺寸/帧率不符，以及已有报告不会被覆盖。测试不需要原始私人项目，也不访问网络。
+
+若只下载了单个 skill 文件夹，仓库级测试不在安装目标中；可从公开仓库下载完整源码运行。用户的项目初始化和安装入口由仓库 README 说明；不要把这些质量检查工具误当成自动创作整部影片的程序。

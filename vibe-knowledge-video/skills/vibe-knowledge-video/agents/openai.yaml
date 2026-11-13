@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Knowledge video"
+  short_description: "先确认用途与风格，再把科学、历史、人文等知识做成经过检查的动画视频"
+  default_prompt: "请使用 $vibe-knowledge-video，先确认这条视频的用途、受众、风格与声画强度，再将我提供的知识主题制作成经过检查的可播放视频。"
