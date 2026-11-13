@@ -1,4 +1,4 @@
-# 可移植工具：节奏、时间轴和导出检查
+# 可移植工具：素材、节奏、时间轴和导出检查
 
 这些工具在本地读写文件，不会上传音频、读取账号或调用付费服务。它们把可机械验证的部分变成报告；**不会替你判断动画是否吸引人、科学解释是否成立，或观众是否真的读得完。**
 
@@ -17,7 +17,22 @@ macOS / Linux 将 `.venv/Scripts/python.exe` 换成 `.venv/bin/python`。下面�
 
 若目标 Python 或系统没有对应版本的二进制包，换用有支持的 Python 版本，或建立新的兼容依赖锁并重跑测试；不要无声地修改版本后继续声称“已验证”。
 
-每个工具都有 `--help`。默认拒绝覆盖已有输出；使用新版本文件名，或明确加 `--force`。任何工具都不应该把输出指向输入文件。失败退出码为 `2`；成功为 `0`。
+每个工具都有 `--help`。音视频工具默认拒绝覆盖已有输出；使用新版本文件名，或明确加其支持的 `--force`。模型盘点工具不提供覆盖选项。任何工具都不应该把输出指向输入文件。
+
+### 项目入口与模型盘点（无需第三方依赖）
+
+下面两项仅需 Python 标准库，可先于音视频依赖安装运行。命令仍以 skill 目录为工作位置，`my-project` 请替换为实际项目路径：
+
+```sh
+python scripts/project_guidance.py --project "my-project"
+python scripts/scan_models.py --project "my-project" --output "my-project/output/model-scan-v1.json"
+```
+
+`project_guidance.py` 为项目 `AGENTS.md` 幂等追加发现入口，保留原有内容；它不创建模型、移动素材或改写已有清单。若存在 `AGENTS.override.md`，提示后按项目实际指引处理。初始化器与安装器也会调用此入口。
+
+`scan_models.py` 默认向终端输出 JSON，`--output` 只创建新报告。它检查 `assets/models/` 及索引中的项目内候选，拒绝读取逃逸项目的路径。`summary.candidateModels` 是文件数，可能包括同一资产的原件和多个转换；`summary.indexedCandidates` 是其中已被索引引用的候选文件数。`missingIndexedFiles`、`excluded`、`errors` 记录缺失／排除／错误；`deferred` 表示超出轻量读取范围，不能据此当成损坏模型。
+
+GLB 报告的场景三角面计入节点实例，来源与 README 只作为位置线索。它不验证所有格式内部结构，不下载或读取外部贴图，不认证许可、科学内容和画质。完整使用判断见 [模型库指南](model-library.md)。
 
 ## 2. 分析 BGM：先找候选，再试听确认
 

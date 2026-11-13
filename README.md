@@ -17,11 +17,12 @@
 | 内容 | 解决的问题 |
 |---|---|
 | **完整制作 skill** | 先讲清什么、怎么吸引人、每一幕怎样解释，而不只要求“高级一点” |
-| **六份制作手册** | 科学证据、故事结构、立体视觉、音乐与卡点、导出检查、封面发布 |
+| **制作手册与工具说明** | 科学证据、故事结构、立体视觉、模型复用、音乐与卡点、导出检查、封面发布 |
 | **可运行的 3D 实验工程** | 双钥匙、真实孔洞、机械动作、关键词揭晓；可预览与渲染 |
 | **默认 BGM＋自定义入口** | 本案例用过的音乐随包提供；换曲后重新分析与编排 |
-| **三个检查工具** | 音乐瞬态分析、字幕与事件时间检查、视频完整解码与抽帧 |
-| **五种工作模板** | 任务说明、事实表、分镜、验收与修订定位 |
+| **素材盘点与检查工具** | 本地模型发现、音乐瞬态分析、字幕与事件时间检查、视频完整解码与抽帧 |
+| **项目接续入口** | 初始化／安装时补充项目指引，新片先检查已有模型，按内容和风格选择复用 |
+| **工作模板** | 任务说明、事实表、素材方案、模型清单、分镜、验收与修订定位 |
 | **真实失败案例** | 为什么“看着高级”仍像 demo、03 卡点失误、30 秒穿模、67 秒锁孔问题，以及修复办法 |
 
 默认适合面向普通观众的 **字幕＋BGM＋关键音效** 视频，二维或三维均可，时长由内容决定。旁白、竖屏、不同风格都可覆盖默认值。不会把所有题材锁成 60 秒、某种配色、某首音乐或同一个癌症故事。
@@ -43,7 +44,15 @@ python install.py --project ../my-science-video
 
 先创建新视频工程，再把 `skills/vibe-science-video/` 安装到它的 `.agents/skills/`，保留原下载包。**同一个新项目必须先 init、再 install**；初始化器拒绝覆盖已存在的目录。已有项目只运行 `install.py`，由代理沿用已有工程；目标已有同名 skill 时会停止，不覆盖旧版本。Windows 若 `python` 无法运行，可使用已安装的 Python 3 的 `py` 或完整路径；无需管理员权限。
 
+初始化与安装会给项目根目录 `AGENTS.md` 追加可重复运行的发现入口，保留已有内容。新项目另有空的 `assets/models/inventory.json` 和素材方案；模型仍需由你提供或按任务取得。已有 `AGENTS.override.md` 时工具会提示优先级，应将入口合并到项目实际生效的指引中。
+
 也可手动复制整个 `skills/vibe-science-video` 文件夹到项目的 `.agents/skills/`。项目级发现方式见 [官方文档](https://learn.chatgpt.com/docs/build-skills)。在其他支持 Agent Skills 的代理里，将整个 skill 放入该产品规定的目录，或要求代理明确读取它的 `SKILL.md`；无需依赖本人的电脑目录。
+
+手动安装或升级后的已有项目，可从项目根目录执行下面命令补接续入口；它保留已有指引、模型和清单，不重复追加：
+
+```sh
+python .agents/skills/vibe-science-video/scripts/project_guidance.py --project .
+```
 
 ### 2. 打开新项目，把这段话交给代理
 
@@ -58,12 +67,23 @@ python install.py --project ../my-science-video
 目标：第一幕就有明确冲突；设置多个会兑现的疑问；关键动作卡在声音瞬态上；
       有空间关系的机制用真实立体动作展示；转场与知识关系一致。
 流程：先完成事实表、分镜，以及前 15 秒＋最难机制＋一个转场的验证。
+素材：先检查本地模型库，说明本片拟复用的模型和必要改造，再决定是否新增素材。
 授权：内部检查通过后继续制作全片，无须逐阶段等待我；缺关键资料时再询问。
 交付：可播放 MP4、可编辑工程、实际时间轴、音乐与来源记录、检查结果、
       16:9 / 4:3 / 3:4 封面，以及标题、简介、标签。所有输出保存在项目中。
 ```
 
 如果你希望先看样片，把授权一行改成“样片完成后等我确认，再扩展全片”。已经有成片需要改，只给出文件和问题时间点，skill 也可以进入修订流程。不要为一处声音问题重写整部影片。
+
+### 已有模型会不会被新对话漏掉？
+
+继续在视频项目根目录打开新对话，让它通过项目指引读取模型库。没有索引时，运行下面的只读盘点；不必先安装音视频依赖：
+
+```sh
+python .agents/skills/vibe-science-video/scripts/scan_models.py --project .
+```
+
+它会区分真实文件、索引中缺失的文件和无效 GLB。候选文件数量包含原件和多种转换，**不等于独立模型数量**。代理再按科学结构、所需动作、风格、性能和许可筛选，并填写 `planning/asset-plan.md`；局部字幕或声音修订不必重扫。模型库复用流程和来源实例见 [专门指南](skills/vibe-science-video/references/model-library.md)。本共享包提供方法、空清单和工具，不附带作者项目中的 13 个第三方模型或它们的授权。
 
 ### 3. 想先确认电脑能运行？
 
@@ -97,6 +117,7 @@ python skills/vibe-science-video/scripts/init_project.py ../video-lab
 - [Skill 入口](skills/vibe-science-video/SKILL.md)：代理开始任务时读。
 - [选题、证据与叙事](skills/vibe-science-video/references/story-and-evidence.md)：论文如何变成可视化问题链。
 - [视觉、3D 与转场](skills/vibe-science-video/references/visual-direction.md)：主体、材质、镜头与接触动作。
+- [模型库与跨对话复用](skills/vibe-science-video/references/model-library.md)：发现已有模型、判断是否适合、保留来源并完成真实试渲染。
 - [音乐、卡点与声音](skills/vibe-science-video/references/music-and-timing.md)：为什么对齐动画起点仍然会“没卡上”。
 - [制作与验收](skills/vibe-science-video/references/production-and-qa.md)：从样片到编码成片，怎样验证。
 - [封面与发布](skills/vibe-science-video/references/publishing.md)：标题承诺、裁切、平台与包装。

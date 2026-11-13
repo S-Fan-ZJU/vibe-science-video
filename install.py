@@ -1,8 +1,13 @@
-"""Install the bundled skill into a chosen project without overwriting anything."""
+"""Install the bundled skill and append its project entry without replacing existing files."""
 from __future__ import annotations
 import argparse
 import shutil
+import sys
 from pathlib import Path
+
+SCRIPTS = Path(__file__).resolve().parent / "skills" / "vibe-science-video" / "scripts"
+sys.path.insert(0, str(SCRIPTS))
+from project_guidance import ensure_project_guidance
 
 
 def ignore_generated(directory: str, names: list[str]) -> set[str]:
@@ -29,6 +34,13 @@ def main() -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copytree(source, destination, ignore=ignore_generated)
     print(f"Installed: {destination}")
+    try:
+        guidance = ensure_project_guidance(args.project)
+    except (OSError, ValueError) as exc:
+        parser.error(f"Skill installed, but project guidance was not changed: {exc}")
+    print(f"Project instructions ({guidance['status']}): {guidance['file']}")
+    for warning in guidance["warnings"]:
+        print(f"Warning: {warning}")
     print("Open the target project in your agent and invoke $vibe-science-video.")
 
 
