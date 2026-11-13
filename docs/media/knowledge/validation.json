@@ -1,0 +1,163 @@
+{
+  "version": "gallery-3d-v2-20261113",
+  "date": "2026-11-13",
+  "films": [
+    {
+      "film": "birthday",
+      "master": {
+        "file": "Birthday.mp4",
+        "bytes": 17576175,
+        "sha256": "02ea67a638897e96a600d04dc837e5cb12646c04621cc2e4f7f0e8f287ee0a8b",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60.0,
+        "frames": 1080,
+        "video_duration": 18,
+        "audio_decoded_duration": 18.005333333333333,
+        "audio_sample_peak": 0.7431775331497192,
+        "full_decode": "passed",
+        "pts": "continuous at 60 fps"
+      },
+      "web": {
+        "file": "birthday.mp4",
+        "bytes": 3891522,
+        "sha256": "0233b310d48a991432d96a9aca6d20cb2064d79bc89d9dd71a63b42a50f652fb",
+        "width": 1280,
+        "height": 720,
+        "fps": 60.0,
+        "frames": 1080,
+        "video_duration": 18,
+        "audio_decoded_duration": 18.005333333333333,
+        "audio_sample_peak": 0.7958770394325256,
+        "full_decode": "passed",
+        "pts": "continuous at 60 fps"
+      },
+      "visual_review": "Reviewed all 15 sampled frames including cue neighbors; subject, text and final result inspected.",
+      "subjective_audio_listening": "not performed on headphones or speakers",
+      "sampled_frames": [
+        0,
+        210,
+        237,
+        238,
+        239,
+        360,
+        476,
+        477,
+        478,
+        540,
+        715,
+        716,
+        717,
+        780,
+        1020
+      ]
+    },
+    {
+      "film": "survivor",
+      "master": {
+        "file": "Survivor.mp4",
+        "bytes": 8226358,
+        "sha256": "b38d2932d65ef24469226486cfdd2cb5cfd7ef986ceb8f7e6a47e93553369cd0",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60.0,
+        "frames": 1080,
+        "video_duration": 18,
+        "audio_decoded_duration": 18.005333333333333,
+        "audio_sample_peak": 0.6481820940971375,
+        "full_decode": "passed",
+        "pts": "continuous at 60 fps"
+      },
+      "web": {
+        "file": "survivor.mp4",
+        "bytes": 2576202,
+        "sha256": "2a4b35211dfa842f6761e2a0933c04db308ae46a7bc2cc53cdc846801f3af727",
+        "width": 1280,
+        "height": 720,
+        "fps": 60.0,
+        "frames": 1080,
+        "video_duration": 18,
+        "audio_decoded_duration": 18.005333333333333,
+        "audio_sample_peak": 0.6270571351051331,
+        "full_decode": "passed",
+        "pts": "continuous at 60 fps"
+      },
+      "visual_review": "Reviewed all 15 sampled frames including cue neighbors; subject, text and final result inspected.",
+      "subjective_audio_listening": "not performed on headphones or speakers",
+      "sampled_frames": [
+        0,
+        202,
+        203,
+        204,
+        210,
+        360,
+        491,
+        492,
+        493,
+        540,
+        735,
+        736,
+        737,
+        780,
+        1020
+      ]
+    },
+    {
+      "film": "rosetta",
+      "master": {
+        "file": "Rosetta.mp4",
+        "bytes": 7483744,
+        "sha256": "6af6ccdecda9d17117c2575aa6aecbd1866d05458d609794b3e0fd05a19c5057",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60.0,
+        "frames": 1080,
+        "video_duration": 18,
+        "audio_decoded_duration": 18.005333333333333,
+        "audio_sample_peak": 0.6702561378479004,
+        "full_decode": "passed",
+        "pts": "continuous at 60 fps"
+      },
+      "web": {
+        "file": "rosetta.mp4",
+        "bytes": 1915719,
+        "sha256": "13fe2a25d496b121ef0823080203f61e751863d04a7e593c18c8505b72b074c7",
+        "width": 1280,
+        "height": 720,
+        "fps": 60.0,
+        "frames": 1080,
+        "video_duration": 18,
+        "audio_decoded_duration": 18.005333333333333,
+        "audio_sample_peak": 0.6708596348762512,
+        "full_decode": "passed",
+        "pts": "continuous at 60 fps"
+      },
+      "visual_review": "Reviewed all 15 sampled frames including cue neighbors; subject, text and final result inspected.",
+      "subjective_audio_listening": "not performed on headphones or speakers",
+      "sampled_frames": [
+        0,
+        210,
+        244,
+        245,
+        246,
+        360,
+        540,
+        554,
+        555,
+        556,
+        780,
+        873,
+        874,
+        875,
+        1020
+      ]
+    }
+  ],
+  "render": {
+    "gl": "angle",
+    "concurrency": 2,
+    "image_format": "png"
+  },
+  "user_aesthetic_acceptance": "awaiting feedback",
+  "subjective_audio_listening": "not performed on headphones or speakers"
+}

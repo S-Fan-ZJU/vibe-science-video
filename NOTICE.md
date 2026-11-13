@@ -14,6 +14,8 @@
 
 ## 项目来源与致谢
 
+新增 Knowledge 网站展示片位于 `docs/media/knowledge/`，按项目作者要求使用三段不同参考片的 18 秒混音摘录。它们与原 Science 示例配乐分别记录；来源、选段及许可范围见 [Knowledge 媒体说明](docs/media/knowledge/README.md)。相关第三方音乐不归本仓库 MIT；Knowledge 短片源码与独立 skill 在 [vibe-knowledge-video](https://github.com/S-Fan-ZJU/vibe-knowledge-video) 维护。
+
 - [Remotion](https://www.remotion.dev/) 与 [官方 Agent Skills](https://www.remotion.dev/docs/ai/skills)：基于当前帧构建动画、预览和离线渲染。本仓库是独立创作流程，并非 Remotion 官方产品。依赖适用各自许可，使用条件请查看 [Remotion 许可](https://www.remotion.dev/docs/license)。
 - 本项目早期使用过名为 `vibe-knowledge` 的 Canvas 动画 skill，其选题、节奏与转场工作流提供了启发。本包重新组织了本次项目的实际经验，不包含该第三方 skill 的完整代码或文档；不声称是其官方更新。
 - [OpenAI 的 skill 文档](https://learn.chatgpt.com/docs/build-skills)：本包使用标准 `SKILL.md` 和项目级安装方式，不需要专用插件服务。

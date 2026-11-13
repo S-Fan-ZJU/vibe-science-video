@@ -1,5 +1,9 @@
 # Vibe Science Video
 
+[Science 网站](https://s-fan-zju.github.io/vibe-science-video/) · [Knowledge 网站](https://s-fan-zju.github.io/vibe-science-video/knowledge.html) · [Knowledge 独立仓库](https://github.com/S-Fan-ZJU/vibe-knowledge-video)
+
+两个方向在网站顶部并列切换，分别下载和维护。网站采用大字与动态主视觉，三个科学示例在同一叠放舞台切换；Knowledge 页面另有三段使用不同参考音轨的知识演示。
+
 **把一个科学问题，做成值得看完的动画。**
 
 面向 Codex 等编程代理的中文制作 skill。把论文阅读、抓人的开场、机制动画、音乐卡点、3D 动效、成片检查和发布封面连成一套可执行流程。

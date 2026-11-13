@@ -1,0 +1,65 @@
+[
+  {
+    "film": "birthday",
+    "reference_id": "ref06",
+    "reference_title": "运气的形状",
+    "source_url": "https://www.douyin.com/video/7690344836800913785",
+    "source_filename": "ref06-运气的形状.mp4",
+    "source_sha256": "38d8b9bbcfd99322b5b14cdd1669a6084a35f5cfe2271a14353d01b185321465",
+    "source_start_seconds": 20.0,
+    "duration_seconds": 18,
+    "audio_file": "birthday.m4a",
+    "audio_sha256": "e0125ae4eb8ee892e1c52532268fef912905ab156ea48f871a51585f37391503",
+    "gain_db": -3.479,
+    "fade_in_seconds": 0.2,
+    "fade_out_seconds": 0.6,
+    "cues_seconds": [
+      3.966666666666667,
+      7.95,
+      11.933333333333334
+    ],
+    "rights": "Third-party reference-video mix, used at the project owner's direction; separate rights unverified, not MIT."
+  },
+  {
+    "film": "survivor",
+    "reference_id": "ref07",
+    "reference_title": "持续努力看似毫无进展，直到一切突然改变",
+    "source_url": "https://www.douyin.com/video/7701632610547535155",
+    "source_filename": "ref07-持续努力与突然改变.mp4",
+    "source_sha256": "625e8280d8cb4d6184bc158e73b3dbfda7e2af85cd23b8a13b2abf3c1c4d4f58",
+    "source_start_seconds": 30.0,
+    "duration_seconds": 18,
+    "audio_file": "survivor.m4a",
+    "audio_sha256": "86424e002033a936bebc92475087492516d145e80e1837734be5e60707d963f9",
+    "gain_db": -1.888,
+    "fade_in_seconds": 0.2,
+    "fade_out_seconds": 0.6,
+    "cues_seconds": [
+      3.3833333333333333,
+      8.2,
+      12.266666666666667
+    ],
+    "rights": "Third-party reference-video mix, used at the project owner's direction; separate rights unverified, not MIT."
+  },
+  {
+    "film": "rosetta",
+    "reference_id": "ref01",
+    "reference_title": "Vibe 神话故事｜《古埃及神话》太阳神的眼睛",
+    "source_url": "https://www.douyin.com/video/7699813430865284352",
+    "source_filename": "ref01-烬序-太阳神的眼睛.mp4",
+    "source_sha256": "74b536e6d97985c5f1cb4269109f606ffd526aa3416d088017f60af7a3c1518e",
+    "source_start_seconds": 12.0,
+    "duration_seconds": 18,
+    "audio_file": "rosetta.m4a",
+    "audio_sha256": "3aa0a754903696d1c6999e03b6d7d7499afcae901049884d36f0d54de8706d65",
+    "gain_db": -1.457,
+    "fade_in_seconds": 0.2,
+    "fade_out_seconds": 0.6,
+    "cues_seconds": [
+      4.083333333333333,
+      9.25,
+      14.566666666666666
+    ],
+    "rights": "Third-party reference-video mix, used at the project owner's direction; separate rights unverified, not MIT."
+  }
+]

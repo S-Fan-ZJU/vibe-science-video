@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Vibe Knowledge video：把好奇变成看得见的知识。跨越数学、认知与历史，按用途选择风格，创作自己的知识动画。">
+  <meta name="theme-color" content="#faf8f2">
+  <meta property="og:title" content="Vibe Knowledge video · 世界，值得多看一眼。">
+  <meta property="og:image" content="https://s-fan-zju.github.io/vibe-science-video/media/knowledge/birthday.jpg">
+  <title>Knowledge — Vibe Video</title>
+  <link rel="stylesheet" href="style.css?v=vibe-method-motion-20261113-v2">
+</head>
+<body data-theme="knowledge">
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="site-header"><div class="header-inner"><a class="wordmark" href="index.html" aria-label="Vibe Video 首页">vibe<span class="wordmark-dot" aria-hidden="true">.</span></a><nav class="product-switch" aria-label="选择产品"><a href="index.html">Science</a><a href="knowledge.html" aria-current="page">Knowledge</a></nav><a class="header-action" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/archive/refs/heads/main.zip">获取 Skill</a></div></header>
+  <main id="main">
+    <section class="hero shell">
+      <div class="hero-copy"><h1>世界，值得<br><span>多看一眼。</span></h1><p>数学的意外，历史的回声。<br>把每一份好奇，变成看得见的知识。</p><div class="hero-actions"><a class="button button-dark" href="#gallery">探索作品</a><a class="button button-quiet" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video">认识 Knowledge</a></div></div>
+      <div class="hero-art"><canvas class="art-canvas" data-art="knowledge" aria-hidden="true"></canvas><button class="motion-toggle" type="button" aria-pressed="false" aria-label="暂停背景动效">暂停动效</button></div>
+      <div class="hero-foot"><span>一种好奇，不止一种风格。</span><span class="hero-line" aria-hidden="true"></span><a href="index.html">也看看 Science</a></div>
+    </section>
+
+    <section class="showcase shell" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-head reveal"><h2 id="gallery-title">熟悉的世界。<br>意外的答案。</h2><p>跨过学科边界。<br>用颜色、节奏和故事，把知识讲清楚。</p></div>
+      <div class="film-gallery reveal" data-gallery>
+        <div class="film-tabs" role="tablist" aria-label="选择知识样片">
+          <button class="film-tab is-active" id="birthday-tab" role="tab" aria-selected="true" aria-controls="birthday-panel" tabindex="0" data-film="0"><span>生日的巧合</span><span class="tab-topic">数学</span></button>
+          <button class="film-tab" id="survivor-tab" role="tab" aria-selected="false" aria-controls="survivor-panel" tabindex="-1" data-film="1"><span>没被看见的样本</span><span class="tab-topic">认知</span></button>
+          <button class="film-tab" id="rosetta-tab" role="tab" aria-selected="false" aria-controls="rosetta-panel" tabindex="-1" data-film="2"><span>读懂失落的文字</span><span class="tab-topic">历史</span></button>
+        </div>
+        <div class="film-deck">
+          <article class="film-card is-active" id="birthday-panel" role="tabpanel" aria-labelledby="birthday-tab" data-card="0"><video controls playsinline preload="metadata" poster="media/knowledge/birthday.jpg?v=gallery-3d-v2-20261113" aria-label="生日悖论知识动画"><source src="media/knowledge/birthday.mp4?v=gallery-3d-v2-20261113" type="video/mp4"></video><div class="film-info"><div><h3>23 个人，巧合已经过半。</h3><p>生日相同的概率，为什么比直觉更大？</p></div><button class="button film-play" type="button" data-play>播放短片</button></div></article>
+          <article class="film-card" id="survivor-panel" role="tabpanel" aria-labelledby="survivor-tab" data-card="1"><video controls playsinline preload="none" poster="media/knowledge/survivor.jpg?v=gallery-3d-v2-20261113" aria-label="幸存者偏差知识动画"><source src="media/knowledge/survivor.mp4?v=gallery-3d-v2-20261113" type="video/mp4"></video><div class="film-info"><div><h3>你看到的，并不是全部。</h3><p>当样本经过筛选，答案也可能悄悄改变。</p></div><button class="button film-play" type="button" data-play>播放短片</button></div></article>
+          <article class="film-card" id="rosetta-panel" role="tabpanel" aria-labelledby="rosetta-tab" data-card="2"><video controls playsinline preload="none" poster="media/knowledge/rosetta.jpg?v=gallery-3d-v2-20261113" aria-label="罗塞塔石碑知识动画"><source src="media/knowledge/rosetta.mp4?v=gallery-3d-v2-20261113" type="video/mp4"></video><div class="film-info"><div><h3>三种文字，打开同一扇门。</h3><p>一块石碑，如何成为读懂古埃及的线索？</p></div><button class="button film-play" type="button" data-play>播放短片</button></div></article>
+        </div>
+        <div class="deck-footer"><span class="deck-count" aria-live="polite">01 / 03</span><a href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/tree/main/examples/gallery">查看样片工程</a></div><p class="play-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="manifesto" aria-labelledby="method-title"><div class="shell"><h2 class="reveal" id="method-title">知识有很多面。<br><span>表达，也应该。</span></h2><div class="method-list">
+      <a class="method-row reveal" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/blob/main/skills/vibe-knowledge-video/references/style-and-purpose.md"><span class="method-visual color-mark" aria-hidden="true"><span class="color-cluster" data-icon-motion="color"><i></i><i></i><i></i></span></span><div><h3>先看用途，再定风格。</h3><p>课堂、科普或创意传播。让表达适合此刻的观众。</p></div></a>
+      <a class="method-row reveal" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/blob/main/skills/vibe-knowledge-video/references/story-and-evidence.md"><span class="method-visual relation-mark" aria-hidden="true"><svg class="method-svg" data-icon-motion="relation" viewBox="0 0 160 130"><path d="M29 29L128 34L78 105Z" fill="none" stroke="#cbbfc0" stroke-width="2"/><g class="relation-flow" fill="#fff0d6"><circle data-flow="0" cx="29" cy="29" r="4" opacity="0"/><circle data-flow="1" cx="128" cy="34" r="4" opacity="0"/><circle data-flow="2" cx="78" cy="105" r="4" opacity="0"/></g><circle cx="29" cy="29" r="12" fill="#ffb18c"/><circle cx="128" cy="34" r="12" fill="#b79bff"/><circle cx="78" cy="105" r="12" fill="#ffd35d"/></svg></span><div><h3>让关系，成为画面。</h3><p>概率、因果与时间。不只给出结论，也让过程可见。</p></div></a>
+      <a class="method-row reveal" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/blob/main/skills/vibe-knowledge-video/references/music-and-timing.md"><span class="method-visual rhythm-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><div><h3>为每个故事，找到节奏。</h3><p>配色、音乐和动作分别选择，让重点自然被记住。</p></div></a>
+    </div></div></section>
+
+    <section class="start shell" id="start" aria-labelledby="start-title"><div class="start-copy reveal"><h2 id="start-title">你的好奇，<br>可以成为下一部。</h2><p>带上一个主题。<br>从用途与风格开始，把它讲给世界。</p><div class="hero-actions"><a class="button button-dark" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/archive/refs/heads/main.zip">下载 Knowledge Skill</a><a class="button button-quiet" href="https://github.com/S-Fan-ZJU/vibe-knowledge-video#使用方式">安装与使用</a></div></div><details class="prompt-details reveal"><summary>复制创作指令<span class="details-mark" aria-hidden="true"></span></summary><div class="prompt-content"><pre id="prompt">请使用 $vibe-knowledge-video，做一条关于【主题】的视频。
+先读项目已有记录，再补问本次用途、受众、风格与声画强度。
+我已提供的要求直接记录；结合事实、参考与素材制定方案。
+完成后交付视频、可编辑工程与检查记录，并更新项目状态。</pre><button class="button button-dark" type="button" data-copy="prompt">复制指令</button><p class="copy-status" role="status" aria-live="polite"></p></div></details></section>
+    <section class="details-section shell"><details><summary>使用与素材说明<span class="details-mark" aria-hidden="true"></span></summary><div class="details-copy"><p>Knowledge 支持科学、历史、数学、认知与人文等题材。鲜明配色、音乐卡点和闪烁都是可选择的手法；事实准确与表达清楚适用于每一种风格。</p><p>样片为方法演示。音乐片段来自作者提供的参考库，未将参考成片混音标为纯 BGM；来源、选段与使用范围见<a href="https://github.com/S-Fan-ZJU/vibe-knowledge-video/tree/main/examples/gallery">样片说明</a>。代码与文档的 MIT 许可不包含第三方音乐。</p></div></details></section>
+  </main>
+  <footer class="site-footer shell"><a class="wordmark" href="index.html">vibe<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="页脚导航"><a href="index.html">Science</a><a href="https://github.com/S-Fan-ZJU/vibe-knowledge-video">GitHub</a><a href="https://github.com/S-Fan-ZJU">Sizhe Fan</a></nav></footer>
+  <noscript><style>.film-deck{display:grid;gap:24px;height:auto}.film-card{position:relative!important;top:0!important;transform:none!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;filter:none!important}.film-card video,.film-card .film-info{opacity:1!important}.film-tabs,.film-play,.motion-toggle,.deck-count,[data-copy]{display:none!important}.hero-art{background:radial-gradient(circle,#ffa88d,transparent 65%)}</style><p class="shell">无需脚本也可使用视频原生控件播放全部作品。</p></noscript>
+  <script src="site.js?v=vibe-method-motion-20261113-v2"></script>
+</body>
+</html>
